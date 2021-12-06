@@ -319,7 +319,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     break;
     case ST_MACRO_1:
     if (record->event.pressed) {
-      SEND_STRING(SS_TAP(X_W));
+      SEND_STRING(SS_LALT(SS_LCTL(SS_TAP(X_DELETE))));
 
     }
     break;
@@ -401,7 +401,7 @@ uint32_t layer_state_set_user(uint32_t state) {
   ergodox_right_led_2_off();
   ergodox_right_led_3_off();
   switch (layer) {
-    case 1:
+    /*case 1:
       ergodox_right_led_1_on();
       break;
     case 2:
@@ -417,8 +417,8 @@ uint32_t layer_state_set_user(uint32_t state) {
     case 5:
       ergodox_right_led_1_on();
       ergodox_right_led_3_on();
-      break;
-    case 6:
+      break;*/
+    case 10:
       ergodox_right_led_2_on();
       ergodox_right_led_3_on();
       break;
