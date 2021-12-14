@@ -1,0 +1,1 @@
+make ergodox_ez/glow:alfonz && ~/opt/wally/wally-cli-2.0.1-linux/wally-cli ./.build/ergodox_ez_glow_alfonz.hex 
