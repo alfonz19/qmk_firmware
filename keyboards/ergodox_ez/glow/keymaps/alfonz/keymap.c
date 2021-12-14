@@ -64,13 +64,37 @@ enum tap_dance_codes {
   DANCE_0,
 };
 
+#ifdef SWAP_HANDS_ENABLE
+__attribute__ ((weak))
+// swap-hands action needs a matrix to define the swap
+const keypos_t hand_swap_config[MATRIX_ROWS][MATRIX_COLS] = {
+    /* Left hand, matrix positions */
+    {{0,13}, {1,13}, {2,13}, {3,13}, {4,13}, {5,13}},
+    {{0,12}, {1,12}, {2,12}, {3,12}, {4,12}, {5,12}},
+    {{0,11}, {1,11}, {2,11}, {3,11}, {4,11}, {5,11}},
+    {{0,10}, {1,10}, {2,10}, {3,10}, {4,10}, {5,10}},
+    {{0,9}, {1,9}, {2,9}, {3,9}, {4,9}, {5,9}},
+    {{0,8}, {1,8}, {2,8}, {3,8}, {4,8}, {5,8}},
+    {{0,7}, {1,7}, {2,7}, {3,7}, {4,7}, {5,7}},
+    /* Right hand, matrix positions */
+    {{0,6}, {1,6}, {2,6}, {3,6}, {4,6}, {5,6}},
+    {{0,5}, {1,5}, {2,5}, {3,5}, {4,5}, {5,5}},
+    {{0,4}, {1,4}, {2,4}, {3,4}, {4,4}, {5,4}},
+    {{0,3}, {1,3}, {2,3}, {3,3}, {4,3}, {5,3}},
+    {{0,2}, {1,2}, {2,2}, {3,2}, {4,2}, {5,2}},
+    {{0,1}, {1,1}, {2,1}, {3,1}, {4,1}, {5,1}},
+    {{0,0}, {1,0}, {2,0}, {3,0}, {4,0}, {5,0}},
+};
+#endif
+
+
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [0] = LAYOUT_ergodox_pretty(
     LT(7,KC_ESCAPE),KC_1,           KC_2,           KC_3,           KC_4,           KC_5,           KC_TRANSPARENT,                                 KC_TRANSPARENT, KC_6,           KC_7,           KC_8,           KC_9,           KC_0,           KC_BSPACE,
-    KC_TAB,         KC_Q,           LT(9,KC_W),     LT(8,KC_E),     KC_R,           LT(10,KC_T),    MO(10),                                         MO(10),         LT(10,KC_Y),    KC_U,           LT(8,KC_I),     LT(9,KC_O),     KC_P,           KC_BSLASH,
+    SH_T(KC_TAB),         KC_Q,           LT(9,KC_W),     LT(8,KC_E),     KC_R,           LT(10,KC_T),    MO(10),                                         MO(10),         LT(10,KC_Y),    KC_U,           LT(8,KC_I),     LT(9,KC_O),     KC_P,           KC_BSLASH,
     KC_BSPACE,      LT(4,KC_A),     LT(3,KC_S),     LT(6,KC_D),     MT(MOD_LSFT, KC_F),KC_G,                                                                           KC_H,           MT(MOD_RSFT, KC_J),LT(6,KC_K),     LT(5,KC_L),     KC_SCOLON,      LT(10,KC_QUOTE),
     KC_LSHIFT,      MT(MOD_LCTL, KC_Z),MT(MOD_LGUI, KC_X),MT(MOD_LALT, KC_C),MT(MOD_LSFT, KC_V),KC_B,           MO(8),                                          KC_TRANSPARENT, KC_N,           MT(MOD_RSFT, KC_M),MT(MOD_RALT, KC_COMMA),MT(MOD_RGUI, KC_DOT),MT(MOD_RCTL, KC_SLASH),KC_RSHIFT,
-    KC_LCTRL,       KC_LGUI,        KC_LALT,        MO(8),          KC_SPACE,                                                                                                       KC_TAB,         MO(8),          KC_RALT,        KC_RGUI,        KC_RCTRL,
+    KC_LCTRL,       KC_LGUI,        KC_LALT,        MO(8),          SH_T(KC_SPACE),                                                                                                       SH_T(KC_TAB),         MO(8),          KC_RALT,        KC_RGUI,        KC_RCTRL,
                                                                                                     KC_CAPSLOCK,    KC_INSERT,      KC_TRANSPARENT, KC_TRANSPARENT,
                                                                                                                     KC_TRANSPARENT, LALT(KC_PSCREEN),
                                                                                     KC_SPACE,       KC_SPACE,       KC_WWW_BACK,    KC_WWW_FORWARD, KC_ENTER,       KC_ENTER
